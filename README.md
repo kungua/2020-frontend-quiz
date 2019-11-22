@@ -131,25 +131,60 @@
    2. [方应杭 es6 文字版 | Promise、class](https://fangyinghang.com/es-6-tutorials/)
    3. 异步 ES6 Generator yield ES7 Async await
    4. 举一些 ES6 对 `String` 字符串类型做的常用升级优化?
+        - ES6新增了字符串模板，在拼接大段字符串时，用反斜杠(`)取代以往的字符串相加的形式，能保留所有空格和换行，使得字符串拼接看起来更加直观，更加优雅。
+        - ES6在`String`原型上新增了`includes()`、`startsWith()`、`endsWith` 、`repeat`方法
    5. 举一些 ES6 对 Array 数组类型做的常用升级优化
+        - Array.from
+        - Array.of
+        - Array.prototype.fill
+        - Array.prototype.find
+        - Array.prototype.findIndex
+        - Array.prototype.copyWithin
+        - Array.prototype.entries
+        - Array.prototype.keys
+        - Array.prototype.values
    6. 举一些 ES6 对 Number 数字类型做的常用升级优化
+        - Number.EPSILON
+        - Number.isInteger
+        - Number.isSafeInteger
+        - Number.isFinite
+        - Number.isNaN(‘NaN’) /
    7. 举一些 ES6 对 Object 类型做的常用升级优化?(重要)
+        - Object.assign()
    8. 举一些 ES6 对 Function 函数类型做的常用升级优化?
 2. 必考： Promise、Promise.all、Promise.race 分别怎么用？
-   1. Promise 对象用于表示一个异步操作的最终完成（或失败）及其结果值
-   2. `Promise.all(iterable)` 方法返回一个 `Promise` 实例，此实例在 `iterable` 参数内所有的 `promise` 都完成 或 参数中不包含 `promise` 时回调完成；如果参数中 `promise` 有一个失败，此实例回调失败，失败原因是第一个失败的 `Promise` 结果
+   1. 背代码 Promise 用法: Promise 对象用于表示一个异步操作的最终完成（或失败）及其结果值
+        ```javascript
+         function fn(){
+            return new Promise((resolve, reject)=>{
+                成功时调用 resolve(数据)
+                失败时调用 reject(错误)
+            })
+        }
+        fn().then(success, fail).then(success2, fail2)
+        ```
+   2. 背代码 Promise.all 用法: `Promise.all(iterable)` 方法返回一个 `Promise` 实例，此实例在 `iterable` 参数内所有的 `promise` 都完成 或 参数中不包含 `promise` 时回调完成；如果参数中 `promise` 有一个失败，此实例回调失败，失败原因是第一个失败的 `Promise` 结果
       - `Promise.all` 等待所有都完成（或第一个失败）。
-      - 如果参数中包含非 `promise` 值，这些值将被忽略，但仍然会被放在返回数组中（如果 `promise` 完成的话）：
-   3. `Promise.race(iterable)` 方法返回一个 `promise` 一旦迭代器中的某个 `promise` 解决或拒绝，返回的 `promise` 就会解决或拒绝
+      - 如果参数中包含非 `promise` 值，这些值将被忽略，但仍然会被放在返回数组中（如果 `promise` 完成的话）
+      ```javascript
+      Promise.all([promise1, promise2]).then(success1, fail1)
+      ```
+
+      promise1和promise2都成功才会调用success1
+   3. 背代码 Promise.race 用法: `Promise.race(iterable)` 方法返回一个 `promise` 一旦迭代器中的某个 `promise` 解决或拒绝，返回的 `promise` 就会解决或拒绝
       - 只处理返回最快的那一个
+      ```javascript
+       Promise.race([promise1, promise2]).then(success1, fail1)
+      ```
+      promise1和promise2只要有一个成功就会调用success1
+
    4. `finally`
 
-[Promise Code](https://codesandbox.io/s/eloquent-vaughan-38fgn?fontsize=14&hidenavigation=1&theme=dark)
+    [Promise Code](https://codesandbox.io/s/eloquent-vaughan-38fgn?fontsize=14&hidenavigation=1&theme=dark)
 
 3. 必考： 手写函数防抖和函数节流
 
    1. 防抖
-
    ```javascript
    // 带着一起做
    // https://codesandbox.io/s/focused-visvesvaraya-7f6ur
@@ -189,90 +224,40 @@
      }
    };
    ```
-
-   2. 节流
-
 4. 必考： 手写 AJAX
 
-```javascript
-var request = new XMLHTTPRequest();
-request.open("GET", "/api/xxx");
-request.onreadystatechange = () => {
-  // request.onload
-  if (request.readyState === 4) {
-    console.log("请求完成");
-    if (request.status === 200) {
-      console.log("请求成功");
+    ```javascript
+    var request = new XMLHTTPRequest();
+    request.open("GET", "/api/xxx");
+    request.onreadystatechange = () => {
+    // request.onload
+    if (request.readyState === 4) {
+        console.log("请求完成");
+        if (request.status === 200) {
+        console.log("请求成功");
+        }
     }
-  }
-};
-request.send();
-```
+    };
+    request.send();
+    ```
 
 5. 必考： 这段代码里面的 this 是什么？
-   1. fn() this->window/global
-   2. obj.fn() this->obj
-   3. fn.call(xx) this->xx
-   4. fn.apply(xx) this-> xx
-   5. fn.bind(xx) this->xx
-   6. new Fn() this->新的对象
-   7. fn = () => {} this->外面的 this
-   8. with/this
-
-```javascript
-// 1
-var obj = {
-  name: "wcky",
-  foo: function() {
-    console.log(this.name); //wcky
-  }
-};
-obj.foo();
-// 显示绑定，通过call()或者apply()方法，第一个参数是一个对象。
-// 2
-function foo() {
-  console.log(this.a);
-}
-var obj = {
-  a: 2
-};
-foo.call(obj); // 2
-// 3
-let a = 1;
-const obj = {
-  a: 2,
-  b: () => {
-    console.log(this.a);
-  },
-  c: function() {
-    console.log(this.a);
-  }
-};
-obj.b();
-obj.c();
-console.log(this.a);
-var a = 1;
-const obj = {
-  a: 2,
-  b: () => {
-    console.log(this.a);
-  },
-  c: function() {
-    console.log(this.a);
-  }
-};
-obj.b();
-obj.c();
-console.log(this.a);
-```
-
-[方应杭 this](https://zhuanlan.zhihu.com/p/23804247)
+    1. 背代码
+        1. fn() this->window/global
+        2. obj.fn() this->obj
+        3. fn.call(xx) this->xx
+        4. fn.apply(xx) this-> xx
+        5. fn.bind(xx) this->xx
+        6. new Fn() this->新的对象
+        7. fn = () => {} this->外面的 this
+        8. with/this
+    2. 看调用
+        [方应杭 this](https://zhuanlan.zhihu.com/p/23804247)
 
 6. 必考： 闭包/立即执行函数是什么？
 
-[方应杭 闭包](https://zhuanlan.zhihu.com/p/22486908)
-
-[方应杭 立即执行函数](https://zhuanlan.zhihu.com/p/22465092)
+    1. [方应杭 闭包](https://zhuanlan.zhihu.com/p/22486908)
+    2. [方应杭 立即执行函数](https://zhuanlan.zhihu.com/p/22465092)
 
 7. 必考： 什么是 JSONP，什么是 CORS，什么是跨域？
    - 跨域:
@@ -294,139 +279,139 @@ console.log(this.a);
 [Async MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)
 
 9. 常考： 如何实现深拷贝？
-   - 递归
-   - 判断类型
-   - 检查循环引用（环）
-   - 不可能拷贝 `__proto__`
-   ```javascript
-   JSON.parse(JSON.stringfiy(obj));
-   ```
+    - 递归
+    - 判断类型
+    - 检查循环引用（环）
+    - 不可能拷贝 `__proto__`
+    ```javascript
+    JSON.parse(JSON.stringfiy(obj));
+    ```
 
-背代码
+    [背代码](https://www.zhihu.com/search?type=content&q=%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F)
 
 10. 常考： 如何使用正则实现 trim()？
 
-```javascript
-function trim(str) {
-  return str.replace(/^\s+|\s+$/g, "");
-}
-```
+    ```javascript
+    function trim(str) {
+    return str.replace(/^\s+|\s+$/g, "");
+    }
+    ```
 
-[30 分钟入门正则表达式](https://deerchao.cn/tutorials/regex/regex.htm)
+    [30 分钟入门正则表达式](https://deerchao.cn/tutorials/regex/regex.htm)
 
 11. 常考： 不用 class 如何实现继承？用 class 又如何实现？
 
-```javascript
-// 方式1
-function Animal() {
-  this.name = "animal";
-  this.b = "gua";
-}
-Animal.prototype.move = function() {
-  console.log("move");
-};
-function Dog() {}
-Dog.prototype = new Animal();
-// 无法实现多继承
-// 父类新增原型方法/原型属性，子类都能访问到
+    ```javascript
+    // 方式1
+    function Animal() {
+        this.name = "animal";
+        this.b = "gua";
+    }
+    Animal.prototype.move = function() {
+        console.log("move");
+    };
+    function Dog() {}
+    Dog.prototype = new Animal();
+    // 无法实现多继承
+    // 父类新增原型方法/原型属性，子类都能访问到
 
-// 方式2
-function Animal() {
-  this.name = "animal";
-  this.b = "gua";
-}
-Animal.prototype.move = function() {
-  console.log("move");
-};
-function Dog() {
-  Animal.call(this);
-}
-//可以实现多继承
-// 但是只能继承父类的实例属性和方法，不能继承原型属性/方法
+    // 方式2
+    function Animal() {
+        this.name = "animal";
+        this.b = "gua";
+    }
+    Animal.prototype.move = function() {
+        console.log("move");
+    };
+    function Dog() {
+        Animal.call(this);
+    }
+    //可以实现多继承
+    // 但是只能继承父类的实例属性和方法，不能继承原型属性/方法
 
-// 方式3
-function Animal() {
-  this.name = "animal";
-  this.b = "gua";
-}
-Animal.prototype.move = function() {
-  console.log("move");
-};
-function Dog() {
-  Animal.call(this, arguments);
-  this.d = 2;
-}
-let f = function() {};
-f.prototype = Animal.prototype;
-Dog.prototype = new f();
+    // 方式3
+    function Animal() {
+        this.name = "animal";
+        this.b = "gua";
+    }
+    Animal.prototype.move = function() {
+        console.log("move");
+    };
+    function Dog() {
+        Animal.call(this, arguments);
+        this.d = 2;
+    }
+    let f = function() {};
+    f.prototype = Animal.prototype;
+    Dog.prototype = new f();
 
-Dog.prototype.constructor = Dog;
+    Dog.prototype.constructor = Dog;
 
-Dog.say = function() {};
+    Dog.say = function() {};
 
-// 使用 class
-class Dog extends Animal {
-  constructor() {
-    super();
-  }
-}
-// 可以继承实例属性/方法，也可以继承原型属性/方法
-// 但是实例化了两个A的构造函数
-```
+    // 使用 class
+    class Dog extends Animal {
+    constructor() {
+        super();
+    }
+    }
+    // 可以继承实例属性/方法，也可以继承原型属性/方法
+    // 但是实例化了两个A的构造函数
+    ```
 
 12. 常考： 如何实现数组去重？
 
-```javascript
-const arr = [12, 32, 89, 12, 12, 12, 78, 12, 32]
+    ```javascript
+    const arr = [12, 32, 89, 12, 12, 12, 78, 12, 32]
 
-function unique1(array) {
-    const n = []
-    for (let i = 0; i < array.length; i++) {
-        if (n.indexOf(array[i]) === -1) {
-            n.push(array[i])
+    function unique1(array) {
+        const n = []
+        for (let i = 0; i < array.length; i++) {
+            if (n.indexOf(array[i]) === -1) {
+                n.push(array[i])
+            }
         }
+        return n
     }
-    return n
-}
-// 速度最快 空间换时间
-function unique2(array) {
-    const n = {}, r = [], type
-    for(let i = 0; i < array.length; i++) {
-        type = typeof array[i]
-        if (!n[array[i]) {
-            n[array[i]] = [type]
-            r.push(array[i])
-        } else if (n[array[i]].indexOf(type) < 0) {
-            n[array[i]].push(type)
-            r.push(array[i])
+    // 速度最快 空间换时间
+    function unique2(array) {
+        const n = {}, r = [], type
+        for(let i = 0; i < array.length; i++) {
+            type = typeof array[i]
+            if (!n[array[i]) {
+                n[array[i]] = [type]
+                r.push(array[i])
+            } else if (n[array[i]].indexOf(type) < 0) {
+                n[array[i]].push(type)
+                r.push(array[i])
+            }
         }
+        return r
     }
-    return r
-}
-// 数组下标判断法
-function unique3(array) {
-    const n = [array[0]]
-    for (var i = 1; i < array.length; i++) {
-        if (array.indexOf(array[i]) === i) {
-            n.push(array[i])
+    // 数组下标判断法
+    function unique3(array) {
+        const n = [array[0]]
+        for (var i = 1; i < array.length; i++) {
+            if (array.indexOf(array[i]) === i) {
+                n.push(array[i])
+            }
         }
+        return n
     }
-    return n
-}
-// es6
-arr = [... new Set(arr)]
-// or
-function dedupe(array) {
-    return Array.form(new Set(array))
-}
-```
+    // es6
+    arr = [... new Set(arr)]
+    // or
+    function dedupe(array) {
+        return Array.form(new Set(array))
+    }
+    ```
 
 13. 放弃： == 相关题目（反着答）
 14. 送命题： 手写一个 Promise (一定要背代码)
 
-```javascript
-```
-
+    提前写一遍，放在博客里，参考 https://juejin.im/post/5aafe3edf265da238f125c0a
+    ```javascript
+    ```
 15. 浏览器事件有哪些过程? 为什么一般在冒泡阶段, 而不是在捕获阶段注册监听?`addEventListener`参数分别是什么?
 16. 面向对象如何实现? 需要复用的变量怎么处理?
 17. 移动端 300ms 延时的原因? 如何处理?
@@ -474,6 +459,8 @@ function isPalindrome(str) {
 `null undefined string boolean object number symbol`
 
 20. new String('a') 和 'a' 是一样的么?
+
+    有一点点区别 new String('a') 的返回值可以添加属性
 21. 移动端如何实现下拉到底部跟随移动结束后回弹的动画?
 22. 移动端如何优化首页白屏时间过长
 23. ES6 generator 函数简述
