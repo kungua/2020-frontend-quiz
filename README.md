@@ -1315,3 +1315,11 @@ Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函�
 
 1.  node 相关的工具链要会 webpack babel rollup 都属于这类
 2.  node 的 web 框架要会，express koa eggjs
+
+## 天猫国际
+1. window.onload
+2. window.onready
+3. jsBridge 如何通讯
+4. 缓存
+5. router 懒加载
+6. v-if 复杂表单
