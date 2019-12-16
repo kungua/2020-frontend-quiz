@@ -1144,26 +1144,35 @@ dfs 是什么？
 
 ## 头条前端(未整理)
 
-一轮
-1.dom react 原理
-2.css 布局
-3.js 原型链继承
-4.fetch 取消
-5.eventloop
-6.instanceof
-7.promise 封装 setstate
-8.redux 基本组成和设计单向数据流
-9.https 协议的过程
-10.https 获取加密密钥的过程
-11.http 的方法有哪几种,每种方法的有用途 12.类式继承的方案
-13.prototype 继承的实现 14.数字千分位处理，正则和非正则都要实现 15.借用构造继承，几种组合继承方式 16.看编程代码说出运行结果：
+### 一轮
+1. dom react 原理
+2. css 布局
+3. js 原型链继承
+4. fetch 取消
+5. eventloop
+6. instanceof
+7. promise 封装 setstate
+8. redux 基本组成和设计单向数据流
+9. https 协议的过程
+10. https 获取加密密钥的过程
+11. http 的方法有哪几种,每种方法的有用途 
+12. 类式继承的方案
+13. prototype 继承的实现
+14. 数字千分位处理，正则和非正则都要实现 
+15. 借用构造继承，几种组合继承方式 
+16. 看编程代码说出运行结果：
+```javascript
 Process.nextTick，setImmediate 和 promise.then 的优先级
-Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函数 18.千位加逗号 19.三个继承方式的优缺点 优化列出代码
-20.odejs 的事件循环
-21.bfc
-22.css 实现正方形 div 水平垂直居中
-23.koa1 的原理,继承 24.最后是一个写代码 处理有依赖的异步任务 加重试
-
+Process.nextTick，pronise, setImmediate 的优先级
+```
+17. 实现一个 bind 函数 
+18. 千位加逗号 
+19. 三个继承方式的优缺点 优化列出代码
+20. nodejs 的事件循环
+21. bfc
+22. css 实现正方形 div 水平垂直居中
+23. koa1 的原理,继承
+24. 最后是一个写代码 处理有依赖的异步任务 加重试
 25. diff 的原理
 26. es6 箭头函数
 27. import 和 requre 的区别
@@ -1176,45 +1185,63 @@ Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函�
 34. 宽是高的一半的垂直居中，里面有字体也要垂直居中类数组
 35. promise async set time out 先后次序
 36. event 类 on once 灯方法
-    37.. ==的隐式转化 38.什么是闭包， 39.最长子序列 40.二叉树中序遍历
-    41.http 握手原理
-    42.react 新版本的特性
+37. ==的隐式转化 
+38. 什么是闭包
+39. 最长子序列 
+40. 二叉树中序遍历
+41. http 握手原理
+42. react 新版本的特性
 37. 多空格字符串格式化为数组
-    44、bind 函数运行结果
-    45、点击 table 的 td 显示 td 内容
-    46、数字千分位处理
-    47、固定日期与当前时间格式化处理
-    48、上中下三栏布局
-    49、实现一个子类实例可以继承父类的所有方法
+44. bind 函数运行结果
+45. 点击 table 的 td 显示 td 内容
+46. 数字千分位处理
+47. 固定日期与当前时间格式化处理
+48. 上中下三栏布局
+49. 实现一个子类实例可以继承父类的所有方法
 38. Jsonp 跨域，js 原型继承 & 原型链，promise，二叉树搜寻算法，算法：前端做并发请求控制
-39. 杭州一面:
-    节流函数
-    Koa 中间件机制及代码实现
-    React Fiber 原理以及为什么 componentWillRecievedProps 会废弃
-    给定一个数组，一个期望值，找到数组中两个相加等于期望值 52.深圳前端一面：
-    react 生命周期 deepClone 回流重绘 canvas 53.深圳前端一面： 1. 数组去重 2. React Hook 原理 3. 列表 diff 中 key 的作用 4. Vue v-model 原理 5. 场景题：Vue CheckBoxGroup/CheckBox 设计 6. Vue 双向绑定原理 54.成都前端：
-    1、换行字符串格式化
-    2、屏幕占满和未占满的情况下，使 footer 固定在底部，尽量多种方法。
-    3、日期转化为 2 小时前，1 分钟前等
-    4、多个 bind 连接后输出的值
-    5、原码，补码，反码
-    6、事件委托 55.成都前端：
-    1，React Hook, Fiber Reconciler ,新的生命周期 getDerivedStateFromPros 为什么是 Static
-    2，redux 异步
-    3，redux 异步中间件原理
-    4，express koa 中间件原理 56.北京前端一面：
+### 杭州一面:
+1. 节流函数
+2. Koa 中间件机制及代码实现
+3. React Fiber 原理以及为什么 componentWillRecievedProps 会废弃
+4. 给定一个数组，一个期望值，找到数组中两个相加等于期望值 
+52
+### 深圳前端一面：
+1. react 生命周期 deepClone 回流重绘 canvas 
+
+### 深圳前端一面： 
+1. 数组去重 
+2. React Hook 原理 
+3. 列表 diff 中 key 的作用 
+4. Vue v-model 原理 
+5. 场景题：Vue CheckBoxGroup/CheckBox 设计 
+6. Vue 双向绑定原理 
+### 成都前端：
+1. 换行字符串格式化
+2. 屏幕占满和未占满的情况下，使 footer 固定在底部，尽量多种方法。
+3. 日期转化为 2 小时前，1 分钟前等
+4. 多个 bind 连接后输出的值
+5. 原码，补码，反码
+6. 事件委托 
+### 成都前端：
+1. React Hook, Fiber Reconciler ,新的生命周期 getDerivedStateFromPros 为什么是 Static
+2. redux 异步
+3. redux 异步中间件原理
+4. express koa 中间件原理 
+### 北京前端一面：
 40. 宏任务微任务
 41. libUA
 42. express ctx 中间键代码实现
 43. vue 发布订阅和虚拟 dom 代码实现
 44. 请实现如下的函数，可以批量请求数据，所有的 URL 地址在 urls 参数中，同时可以通过 max 参数 控制请求的并发度，当所有请求结束之后，需要执行 callback 回调函数。发请求的函数可以直接 使用 fetch 即可
+### 南京前端 1 面： 
+1. 事件循环
+2. react diff 算法，key 的作用，setData 的机制，事件合成
+3. vue 的 v-model 原理 
+4. 实现一个方法，参数是一个 generator 函数，执行结果是执行完所有 generator 中的 yield 
+5. 获取页面所有 img 并且下载 
+6. 两个同源 tab 之间的交互，数据同步
 
-45. 南京前端 1 面： 1.事件循环
-    2.react diff 算法，key 的作用，setData 的机制，事件合成
-    3.vue 的 v-model 原理 4.实现一个方法，参数是一个 generator 函数，执行结果是执行完所有 generator 中的 yield 5.获取页面所有 img 并且下载 6.两个同源 tab 之间的交互，数据同步
-
-58.上海前端一面：
-
+### 上海前端一面：
 1. 怎么将一个异步方法 promise 化，以及实现 promise.all()方法
 2. vue 单页多页的区别，vue 路由实现原理
 3. vue 数据驱动视图原理？更新视图的过程是否是同步的操作？
@@ -1233,47 +1260,43 @@ Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函�
 15. 函数节流
 16. 动态规划算法
 
-59) 北京前端一面：
+### 北京前端一面：
 
-    1. function request(urls, maxNumber, callback) 要求编写函数实现，根据 urls 数组内的 url 地址进行并发网络请求，最大并发数 maxNum ber,当所有请求完毕后调用 callback 函数(已知请求网络的方法可以使用 fetch api)
+1. function request(urls, maxNumber, callback) 要求编写函数实现，根据 urls 数组内的 url 地址进行并发网络请求，最大并发数 maxNum ber,当所有请求完毕后调用 callback 函数(已知请求网络的方法可以使用 fetch api)
+2. throttle 函数实现
+3. requestAnimationFrame 和 setTime、setInterval 的区别，requestAnimationFrame 可以做什么
+4. 二叉树路径总和（leetcode 112）
+5. 给定一个不含重复数字的数组 arr,指定个数 n,目标和 sum,判断是否含有由 n 个不同数字相加得到 sum 的情况（leetcode 40 变种， 数 字不得重复使用）
 
-    2. throttle 函数实现
+### 上海前端一面：
+1. websocket 原理
+2. http2 如何实现多路复用
+3. 冒泡算法
+4. 前端安全 ， DOS
+5. 前端缓存、回话机制
+6. 跨域
+7. 计算机网络知识 TCP UDP
+8. 测试 单测、集成测试
+9. 自动化集成
+10. Docker 应用
+11. Nodejs express koa
 
-       3.requestAnimationFrame 和 setTime、setInterval 的区别，requestAnimationFrame 可以做什么
+### 成都前端笔试：
+1. 输入一个日期 返回几秒前 几天前或者几月前；
+2. 153812.7 转化 153,812.7；
+3. 用两种方法 一种是正则；
+4. 还有关于 bind 的一道题；
 
-    4.二叉树路径总和（leetcode 112）
+### 北京前端一面
+①['a','b'],['A','B'],['1','0']，输出['aA1','aA0','aB1','aB0','bA1','bA0','bB1','bB0']，算法的排列组合问题
+②vue-router 路由监听的原理
+③webpack 打包的原理，webpack 有没有针对打包过程做一些优化提升打包速度
+④ 请实现如下的函数，可以批量请求数据，所有的 URL 地址在 urls 参数中，同时可以通过 max 参数，控制请求的并发度，实现 max 个请求执行完之后再执行下 max 个请求，当所有请求结束之后，需要执行 callback 回调函数。发请求的函数可以直接 使用 fetch 即可
+⑤vue 双向绑定的原理 64.深圳抖音
+写一个 eventBus，元素水平垂直居中，vuex mobox，小程序架构优化 日志系统
 
-    5. 给定一个不含重复数字的数组 arr,指定个数 n,目标和 sum,判断是否含有由 n 个不同数字相加得到 sum 的情况（leetcode 40 变种， 数 字不得重复使用）
-
-60) 上海前端一面：
-    websocket 原理
-    http2 如何实现多路复用
-61)
-62) 冒泡算法
-63) 前端安全 ， DOS
-64) 前端缓存、回话机制
-65) 跨域
-66) 计算机网络知识 TCP UDP
-67) 测试 单测、集成测试
-68) 自动化集成
-69) Docker 应用
-70) Nodejs express koa
-
-    62.成都前端笔试：1、输入一个日期 返回几秒前 几天前或者几月前；
-    2、153812.7 转化 153,812.7；
-    3、用两种方法 一种是正则；
-    4、还有关于 bind 的一道题；
-
-71) 北京前端一面
-    ①['a','b'],['A','B'],['1','0']，输出['aA1','aA0','aB1','aB0','bA1','bA0','bB1','bB0']，算法的排列组合问题
-    ②vue-router 路由监听的原理
-    ③webpack 打包的原理，webpack 有没有针对打包过程做一些优化提升打包速度
-    ④ 请实现如下的函数，可以批量请求数据，所有的 URL 地址在 urls 参数中，同时可以通过 max 参数，控制请求的并发度，实现 max 个请求执行完之后再执行下 max 个请求，当所有请求结束之后，需要执行 callback 回调函数。发请求的函数可以直接 使用 fetch 即可
-    ⑤vue 双向绑定的原理 64.深圳抖音
-    写一个 eventBus，元素水平垂直居中，vuex mobox，小程序架构优化 日志系统
-
-二轮: 1.主要是围绕你的项目经历和技术，有一定的深度，主要还是要对项目全面熟悉；还有一个就是函数 柯理化的编码实现
-
+## 二轮: 
+1. 主要是围绕你的项目经历和技术，有一定的深度，主要还是要对项目全面熟悉；还有一个就是函数 柯理化的编码实现
 2. 函数柯里化、Web 安全、react 性能优化、react 算法原理 3.上来直接让写一个 autocomplete 组件，可能是想考察业务思考点；
 3. 后续的问题主要会接着业务场景问 扣实际场景 不问知识理论；
 4. http 网络协议 ；
@@ -1312,7 +1335,6 @@ Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函�
    6. js 多线程如何共享大的数据
 
 ## Node
-
 1.  node 相关的工具链要会 webpack babel rollup 都属于这类
 2.  node 的 web 框架要会，express koa eggjs
 
@@ -1323,3 +1345,5 @@ Process.nextTick，pronise, setImmediate 的优先级 17.实现一个 bind 函�
 4. 缓存
 5. router 懒加载
 6. v-if 复杂表单
+7. [微前端](https://www.zhihu.com/search?type=content&q=%E5%BE%AE%E5%89%8D%E7%AB%AF)
+8. [打包优化](https://zhuanlan.zhihu.com/p/42465502)
